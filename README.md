@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+# Voice to Chat
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a web-based application that recognizes speech input, sends the recognized text to the Gemini AI model for processing, and displays the result on a user-friendly UI. The backend uses Flask to handle speech recognition and the Gemini API, while the frontend is built with React to provide a clean and responsive user interface.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Folder Structure](#folder-structure)
+- [Acknowledgements](#acknowledgements)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Speech Recognition**: Allows the user to speak through their microphone and converts the speech to text using Google Speech Recognition API.
+- **AI-Powered Response**: Sends the recognized text to Gemini AI and displays the response in the UI.
+- **Markdown Output**: AI responses are rendered in markdown format, allowing for clean, formatted text output.
+- **Responsive Design**: The frontend is fully responsive and works well on both desktop and mobile devices.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Technologies Used
 
-### `npm test`
+- **Backend**: Flask, SpeechRecognition, Google Gemini API
+- **Frontend**: React, React Markdown
+- **Other Dependencies**: Flask-CORS for cross-origin resource sharing, `speech_recognition` for handling audio input, and `google.generativeai` for integrating with Gemini.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Python** (>=3.7)
+- **Node.js** (>=14)
+- **npm** or **yarn**
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Backend Setup
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clone the repository:
+    ```bash
+    git clone <repository-url>
+    cd <repository-folder>/backend
+    ```
 
-### `npm run eject`
+2. Create a virtual environment and activate it:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Install the required Python dependencies:
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. Start the Flask server:
+    ```bash
+    python main.py
+    ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Frontend Setup
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Go to the `frontend` directory:
+    ```bash
+    cd ../frontend
+    ```
 
-## Learn More
+2. Install the required dependencies:
+    ```bash
+    npm install
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Start the React application:
+    ```bash
+    npm start
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+The frontend will run on `http://localhost:3000` by default, and the backend on `http://localhost:5000`.
 
-### Code Splitting
+## Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Gemini API Key**: You need to configure your API key for Gemini in the backend. Replace the placeholder API key in `main.py`:
 
-### Analyzing the Bundle Size
+    ```python
+    genai.configure(api_key="YOUR_GEMINI_API_KEY")
+    ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    Make sure you have a valid API key from Google Gemini.
 
-### Making a Progressive Web App
+## Usage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+1. Open your browser and navigate to `http://localhost:3000`.
+2. Click on the **Start Speech Recognition** button.
+3. Speak into your microphone when prompted.
+4. The recognized speech will be sent to the Gemini AI model, and the response will be displayed in the **Gemini Response** section.
 
-### Advanced Configuration
+## Folder Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
